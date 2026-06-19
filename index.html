@@ -388,7 +388,7 @@ function buildCard(r,receiptNo){
     {l:'Cleared',v:r.cleared_date||'Pending',done:isPast(r.cleared_date)}
   ];
   var html='<div class="shipment-card">';
-  html+='<div class="card-top"><div class="card-warehouse">'+r.warehouse+(hasCtn?' · '+r.container:'')+'</div><div class="card-code">'+r.warehouse_code+(receiptNo?' · '+receiptNo:'')+'</div></div>';
+  html+='<div class="card-top"><div class="card-warehouse">'+r.warehouse+'</div><div class="card-code">'+r.warehouse_code+(receiptNo?' · '+receiptNo:'')+'</div></div>';
   if(r.marks)html+='<div style="padding:0 28px"><div class="card-marks">Marks: '+r.marks+'</div></div>';
   html+='<div class="card-body"><div class="timeline">';
   steps.forEach(function(s){html+='<div class="timeline-item '+(s.done?'':'pending')+'"><div class="timeline-line'+(s.done?' solid':'')+'"><div class="timeline-dot '+(s.done?'done':'pending')+'"></div></div><div class="timeline-content"><div class="timeline-label">'+s.l+'</div><div class="timeline-value">'+s.v+'</div></div></div>';});
