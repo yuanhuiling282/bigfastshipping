@@ -384,7 +384,7 @@ var searchInput=document.getElementById('searchInput');
 if(tabReceipt){tabReceipt.addEventListener('click',function(){searchType='receipt';tabReceipt.classList.add('active');tabContainer.classList.remove('active');searchInput.value='';searchInput.placeholder='Enter receipt no. (e.g. 6684633)';searchInput.focus();},false);}
 if(tabContainer){tabContainer.addEventListener('click',function(){searchType='container';tabContainer.classList.add('active');tabReceipt.classList.remove('active');searchInput.value='';searchInput.placeholder='Enter container no. (e.g. CSNU7722176)';searchInput.focus();},false);}
 function buildCard(r,receiptNo){
-  var hasCtn=!!r.container;
+  var hasCtn=!!r.loaded_date;
   var now=new Date();now.setHours(0,0,0,0);
   function isPast(s){if(!s)return false;var d=new Date(s);return !isNaN(d.getTime())&&d<=now;}
   var etaLabel='ETA';
