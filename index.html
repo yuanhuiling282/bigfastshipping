@@ -387,7 +387,7 @@ if(tabContainer){tabContainer.addEventListener('click',function(){searchType='co
 function buildCard(r,receiptNo){
   var hasCtn=!!r.loading_date;
   var now=new Date();now.setHours(0,0,0,0);
-  function isPast(s){if(!s)return false;var d=new Date(s);return !isNaN(d.getTime())&&d<=now;}
+  function isPast(s){if(!s)return false;var d=new Date(s+'T00:00:00');var todayStr=new Date().toISOString().slice(0,10);if(s===todayStr)return true;return !isNaN(d.getTime())&&d<=now;}
   var etaLabel='ETA';
   if(r.eta_date&&isPast(r.eta_date))etaLabel='DISCHARGED';
   var steps=[
