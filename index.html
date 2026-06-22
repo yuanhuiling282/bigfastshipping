@@ -384,16 +384,14 @@ var searchInput=document.getElementById('searchInput');
 if(tabReceipt){tabReceipt.addEventListener('click',function(){searchType='receipt';tabReceipt.classList.add('active');tabContainer.classList.remove('active');searchInput.value='';searchInput.placeholder='Enter receipt no. (e.g. 6684633)';searchInput.focus();},false);}
 if(tabContainer){tabContainer.addEventListener('click',function(){searchType='container';tabContainer.classList.add('active');tabReceipt.classList.remove('active');searchInput.value='';searchInput.placeholder='Enter container no. (e.g. CSNU7722176)';searchInput.focus();},false);}
 function buildCard(r,receiptNo){
-  var hasCtn=!!r.loaded_date;
+  var hasCtn=!!r.loading_date;
   var now=new Date();now.setHours(0,0,0,0);
   function isPast(s){if(!s)return false;var d=new Date(s);return !isNaN(d.getTime())&&d<=now;}
-  var etaLabel='ETA';
-  if(r.eta_date&&isPast(r.eta_date))etaLabel='DISCHARGED';
   var steps=[
-    {l:'Received',v:r.in_date||'Unknown',done:true},
-    {l:'Loaded',v:r.loading_date||'Pending',done:isPast(r.loading_date)},
-    {l:etaLabel,v:r.eta_date||(r.port||'Pending'),done:isPast(r.eta_date)},
-    {l:'Cleared',v:r.cleared_date||'Pending',done:isPast(r.cleared_date)}
+    {l:'ENTERED CHINA WAREHOUSE',v:r.in_date||'Unknown',done:true},
+    {l:'LOADED',v:r.loading_date||'Pending',done:!!r.loading_date},
+    {l:'DISCHARGED',v:r.eta_date||(r.port||'Pending'),done:isPast(r.eta_date)},
+    {l:'READY TO PICK UP',v:r.cleared_date||'Pending',done:!!r.cleared_date}
   ];
   var html='<div class="shipment-card">';
   html+='<div class="card-top"><div class="card-warehouse">'+r.warehouse+(hasCtn?' · '+r.container:'')+'</div><div class="card-code">'+r.warehouse_code+(receiptNo?' · '+receiptNo:'')+'</div></div>';

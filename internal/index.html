@@ -30,7 +30,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .nav-links a:hover{background:var(--blue-l);color:var(--blue)}
 
 /* Hero - CMA-CGM style full-width */
-.hero{background:url('../hero-bg.jpg') center/cover no-repeat;padding:72px 24px 50px;position:relative;overflow:hidden;display:flex;justify-content:flex-end;align-items:center}
+.hero{background:url('hero-bg.jpg') center/cover no-repeat;padding:72px 24px 50px;position:relative;overflow:hidden;display:flex;justify-content:flex-end;align-items:center}
 .hero::before{content:'';position:absolute;inset:0;background:transparent;pointer-events:none}
 
 .hero-content{position:relative;z-index:1;max-width:680px;margin:0 auto}
@@ -387,13 +387,11 @@ function buildCard(r,receiptNo){
   var hasCtn=!!r.container;
   var now=new Date();now.setHours(0,0,0,0);
   function isPast(s){if(!s)return false;var d=new Date(s);return !isNaN(d.getTime())&&d<=now;}
-  var etaLabel='ETA';
-  if(r.eta_date&&isPast(r.eta_date))etaLabel='DISCHARGED';
   var steps=[
-    {l:'Received',v:r.in_date||'Unknown',done:true},
-    {l:'Loaded',v:r.loading_date||'Pending',done:isPast(r.loading_date)},
-    {l:etaLabel,v:r.eta_date||(r.port||'Pending'),done:isPast(r.eta_date)},
-    {l:'Cleared',v:r.cleared_date||'Pending',done:isPast(r.cleared_date)}
+    {l:'ENTERED CHINA WAREHOUSE',v:r.in_date||'Unknown',done:true},
+    {l:'LOADED',v:r.loading_date||'Pending',done:!!r.loading_date},
+    {l:'DISCHARGED',v:r.eta_date||(r.port||'Pending'),done:isPast(r.eta_date)},
+    {l:'READY TO PICK UP',v:r.cleared_date||'Pending',done:!!r.cleared_date}
   ];
   var html='<div class="shipment-card">';
   html+='<div class="card-top"><div class="card-warehouse">'+r.warehouse+(hasCtn?' · '+r.container:'')+'</div><div class="card-code">'+r.warehouse_code+(receiptNo?' · '+receiptNo:'')+'</div></div>';
