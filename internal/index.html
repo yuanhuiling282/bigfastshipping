@@ -400,7 +400,7 @@ function buildCard(r,receiptNo){
   html+='<div class="card-top"><div class="card-warehouse">'+r.warehouse+(hasCtn?' · '+r.container:'')+'</div><div class="card-code">'+r.warehouse_code+(receiptNo?' · '+receiptNo:'')+'</div></div>';
   if(r.marks)html+='<div style="padding:0 28px"><div class="card-marks">Marks: '+r.marks+'</div></div>';
   html+='<div class="card-body"><div class="timeline">';
-  steps.forEach(function(s){html+='<div class="timeline-item '+(s.done?'':'pending')+'"><div class="timeline-line'+(s.done?' solid':'')+'"><div class="timeline-dot '+(s.done?'done':'pending')+'"></div></div></div><div class="timeline-content"><div class="timeline-label">'+s.l+'</div><div class="timeline-value">'+s.v+'</div></div></div>';});
+  steps.forEach(function(s){html+='<div class="timeline-item '+(s.done?'':'pending')+'"><div class="timeline-line'+(s.done?' solid':'')+'"><div class="timeline-dot '+(s.done?'done':'pending')+'"></div></div><div class="timeline-content"><div class="timeline-label">'+s.l+'</div><div class="timeline-value">'+s.v+'</div></div></div>';});
   html+='</div></div>';
   if(hasCtn){html+='<div class="card-bottom">';if(r.shipping_line)html+='<div class="meta"><strong>'+r.shipping_line+'</strong></div>';if(r.port)html+='<div class="meta"><strong>'+r.port+'</strong></div>';html+='</div>';}
   else html+='<div style="padding:0 24px 20px"><div class="pending-bar">Not yet loaded into container</div></div>';
