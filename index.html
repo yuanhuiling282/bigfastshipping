@@ -385,7 +385,7 @@ if(tabReceipt){tabReceipt.addEventListener('click',function(){searchType='receip
 if(tabContainer){tabContainer.addEventListener('click',function(){searchType='container';tabContainer.classList.add('active');tabReceipt.classList.remove('active');searchInput.value='';searchInput.placeholder='Enter container no. (e.g. CSNU7722176)';searchInput.focus();},false);}
 
 function buildCard(r,receiptNo){
-  var hasCtn=!!r.loading_date;
+  var hasCtn=!!r.container;
   function getBjDateStr(){var now=new Date();var utc=now.getTime()+now.getTimezoneOffset()*60000;var bj=new Date(utc+8*3600000);return bj.getFullYear()+'-'+String(bj.getMonth()+1).padStart(2,'0')+'-'+String(bj.getDate()).padStart(2,'0');}
   var todayStr=getBjDateStr();
   function isPast(s){if(!s)return false;if(s===todayStr)return true;return s<todayStr;}
@@ -404,7 +404,7 @@ function buildCard(r,receiptNo){
   steps.forEach(function(s){html+='<div class="timeline-item '+(s.done?'':'pending')+'"><div class="timeline-line'+(s.done?' solid':'')+'"><div class="timeline-dot '+(s.done?'done':'pending')+'"></div></div><div class="timeline-content"><div class="timeline-label">'+s.l+'</div><div class="timeline-value">'+s.v+'</div></div></div>';});
   html+='</div></div>';
   if(hasCtn){html+='<div class="card-bottom">';if(r.shipping_line)html+='<div class="meta"><strong>'+r.shipping_line+'</strong></div>';if(r.port)html+='<div class="meta"><strong>'+r.port+'</strong></div>';html+='</div>';}
-  else html+='<div style="padding:0 24px 20px"><div class="pending-bar">Not yet loaded into container</div></div>';
+  // 未装柜不再显示提示条
   html+='</div>';
   return html;
 }

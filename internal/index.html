@@ -404,7 +404,7 @@ function buildCard(r,receiptNo){
   steps.forEach(function(s){html+='<div class="timeline-item '+(s.done?'':'pending')+'"><div class="timeline-line'+(s.done?' solid':'')+'"><div class="timeline-dot '+(s.done?'done':'pending')+'"></div></div><div class="timeline-content"><div class="timeline-label">'+s.l+'</div><div class="timeline-value">'+s.v+'</div></div></div>';});
   html+='</div></div>';
   if(hasCtn){html+='<div class="card-bottom">';if(r.shipping_line)html+='<div class="meta"><strong>'+r.shipping_line+'</strong></div>';if(r.port)html+='<div class="meta"><strong>'+r.port+'</strong></div>';html+='</div>';}
-  else html+='<div style="padding:0 24px 20px"><div class="pending-bar">Not yet loaded into container</div></div>';
+  // 未装柜不再显示提示条
   html+='</div>';
   return html;
 }
