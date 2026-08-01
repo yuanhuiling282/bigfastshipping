@@ -85,9 +85,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .timeline-dot.done{background:linear-gradient(135deg,var(--green),var(--green-l));box-shadow:0 3px 12px rgba(0,200,83,0.3)}
 .timeline-dot.pending{background:linear-gradient(135deg,var(--orange),var(--orange-l));box-shadow:0 3px 12px var(--orange-g);animation:dp 2s ease-in-out infinite}
 @keyframes dp{0%,100%{box-shadow:0 3px 12px var(--orange-g)}50%{box-shadow:0 3px 20px rgba(255,102,0,0.45)}}
-.timeline-content{min-width:0}
-.timeline-label{font-size:10px;color:var(--g400);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
-.timeline-value{font-size:13px;font-weight:700;color:var(--g900);word-break:break-word}
+.timeline-content{min-width:50px}
+.timeline-label{font-size:10px;color:var(--g400);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;white-space:nowrap}
+.timeline-value{font-size:13px;font-weight:700;color:var(--g900);word-break:break-word;line-height:1.3}
 .timeline-item.pending .timeline-value{color:var(--orange)}
 .timeline-item.pending .timeline-label{color:var(--orange)}
 .card-marks{display:inline-block;padding:4px 12px;background:var(--navy);color:#fff;border-radius:4px;font-size:13px;font-weight:700;letter-spacing:0.5px;margin-top:8px}
@@ -188,9 +188,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   .card-warehouse{font-size:16px}
   .card-code{font-size:12px}
   .card-marks{font-size:12px;padding:8px 12px}
-  .timeline{padding:0 8px}
-  .timeline-label{font-size:11px}
-  .timeline-value{font-size:12px}
+  .timeline{padding:0 4px}
+  .timeline-content{min-width:60px}
+  .timeline-label{font-size:8px;margin-bottom:8px;letter-spacing:0.3px}
+  .timeline-value{font-size:11px;line-height:1.25}
   .card-bottom{flex-direction:column;gap:8px;padding-top:12px}
   .meta{font-size:12px}
   .not-found-card{padding:32px 20px}
